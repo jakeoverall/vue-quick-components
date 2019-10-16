@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="toaster">
+      <quick-toast title="Hello" body="voluptatibus?" :life="6"/>
+      <quick-toast title="Hello" body="voluptatibus?" icon="fa-book" />
+      <quick-toast title="Error" body="It would appear that something broke" icon="fa-times" type="danger" :life="12" />
+      <quick-toast title="Hello" body="voluptatibus?" icon="fa-globe" type="info"/>
+      <quick-toast title="Hello" body="voluptatibus?" icon="fa-check" type="success" :life="8"/>
+      <quick-toast title="Hello" body="voluptatibus?" img="https://atlasworlds.blob.core.windows.net/public/entity-images/entity-23487365-e0f9-495e-bfd4-b6240d09661a.png"/>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
   components: {
-    HelloWorld
+
   }
 }
 </script>
@@ -25,4 +29,11 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.toaster{
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+}
+
 </style>
