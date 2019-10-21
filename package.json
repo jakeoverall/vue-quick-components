@@ -1,10 +1,10 @@
 {
-  "name": "vue-quick-components",
+  "name": "@bcwdev/quickvue",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "bundle": "vue-cli-service build --target lib --name quickvue [entry]"
   },
   "dependencies": {
     "core-js": "^2.6.5",

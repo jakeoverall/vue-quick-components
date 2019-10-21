@@ -3,18 +3,18 @@
     <div class="d-flex align-items-center justify-content-between">
       <div
         @click="show = !show"
-        class="d-flex align-items-center flex-grow action muted"
+        class="d-flex align-items-center flex-grow action muted no-select"
         :class="titleClass"
         :style="titleStyle"
       >
         <i
-          class="fa fa-fw m-r-1"
-          :class="{'fa-caret-square-o-right': !show, 'fa-caret-square-o-down': show}"
+          class="fa fa-fw mr-2"
+          :class="{'fa-caret-right': !show, 'fa-caret-down': show}"
         ></i>
         <h5 class="m-0">{{title}}</h5>
       </div>
       <div v-if="add" class="action muted" @click="showForm = !showForm">
-        <i class="fa fa-fw m-l-1" :class="showForm ? addIcons.close : addIcons.open"></i>
+        <i class="fa fa-fw ml-1" :class="showForm ? addIcons.close : addIcons.open"></i>
       </div>
     </div>
     <div class="slide-down" :class="{'open flex-grow-1': showForm}">
@@ -60,6 +60,13 @@ export default {
 </script>
 
 <style>
+.action{
+  cursor: pointer;
+  transition: all .3s linear;
+}
+.no-select{
+  user-select: none;
+}
 .slide-down {
   overflow: hidden;
   max-height: 0;
@@ -76,4 +83,9 @@ export default {
   overflow: auto;
   max-height: 100vh;
 }
+
+.slide-down::-webkit-scrollbar{
+  width: 0;
+}
+
 </style>

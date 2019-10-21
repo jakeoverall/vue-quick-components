@@ -1,39 +1,40 @@
 <template>
   <div id="app">
-    <div class="toaster">
-      <quick-toast title="Hello" body="voluptatibus?" :life="6"/>
-      <quick-toast title="Hello" body="voluptatibus?" icon="fa-book" />
-      <quick-toast title="Error" body="It would appear that something broke" icon="fa-times" type="danger" :life="12" />
-      <quick-toast title="Hello" body="voluptatibus?" icon="fa-globe" type="info"/>
-      <quick-toast title="Hello" body="voluptatibus?" icon="fa-check" type="success" :life="8"/>
-      <quick-toast title="Hello" body="voluptatibus?" img="https://atlasworlds.blob.core.windows.net/public/entity-images/entity-23487365-e0f9-495e-bfd4-b6240d09661a.png"/>
-    </div>
+    <toaster location="bottom-right"/>
+
+    <button @click="addToast">add toast</button>
+
+    <quick-view title="something"  tag="fa-globe" tag-color="white" color="red">
+      <div class=" p-3">
+        <h1>Things go here</h1>
+      </div>
+    </quick-view>
+
+    <quick-collapse title="something">
+      <h1>Things go here</h1>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, ipsam! Quaerat reiciendis voluptatum doloribus laudantium odio iure nisi tempora iste accusantium repellendus consequatur non quos provident illo, laboriosam libero. Libero.</p>
+    </quick-collapse>
   </div>
 </template>
 
 <script>
+import { toastError, toastSuccess, toastWarning, toastInfo, toast } from "./components/Notifications/NotificationService";
 export default {
-  name: 'app',
-  components: {
-
+  name: "app",
+  components: {},
+  methods: {
+    addToast() {
+      // this.$toastSuccess("funny it works")
+      // toastError("This is an error");
+      // toastSuccess("This is a Success")
+      // toastWarning("This is a warning")
+      // toastInfo("This is just an info", "With a custom title")
+      // toast({
+      //   title: "A custom title",
+      //   img: "//placehold.it/200x200",
+      //   body: "that was odd"
+      // })
+    }
   }
-}
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-.toaster{
-  position: fixed;
-  bottom: 1em;
-  right: 1em;
-}
-
-</style>

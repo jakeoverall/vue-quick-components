@@ -3,18 +3,20 @@
     <div class="title" :class="{'force-click': forceClick}">
       <div class="hover-content" :style="position">
         <div class="card m-0">
-          <div class="p-1 m-0">
+          <div class="m-0">
             <div class="d-flex align-items-center justify-content-between">
-              <h5 class="m-0" v-if="title">{{title}}:</h5>
-              <span v-if="tag" class="tag" :style="{'background-color': color || 'purple'}">
-                <i
-                  v-if="tag == 'icon'"
-                  class="fa fa-lg fa-fw"
-                  :class="icon"
-                  :style="{'color': tagColor}"
-                ></i>
-                <span v-else>{{tag}}</span>
-              </span>
+              <slot name="title">
+                <p class="m-0" v-if="title">{{title}}:</p>
+                <span v-if="tag" class="tag" :style="{'background-color': color || 'purple'}">
+                  <i
+                    v-if="tag == 'icon'"
+                    class="fa fa-lg fa-fw"
+                    :class="icon"
+                    :style="{'color': tagColor}"
+                  ></i>
+                  <span :style="{'color': tagColor}" v-else>{{tag}}</span>
+                </span>
+              </slot>
               <div
                 class="quick-view-close-button text-center"
                 :class="{active: active}"
@@ -59,7 +61,7 @@ export default {
     showTitle: { type: Boolean, default: false },
     color: { type: String, default: "inherit" },
     tag: String,
-    tagColor: { type: String, default: "var(--light)" },
+    tagColor: { type: String},
     icon: String,
     forceClick: { type: Boolean, default: false },
     useSlot: { type: Boolean, default: false }
@@ -107,7 +109,7 @@ export default {
         } else {
           mod.x += el.offsetWidth;
         }
-        console.log("top:", this.position.top, e.clientY, mod.y)
+        console.log("top:", this.position.top, e.clientY, mod.y);
         this.position.top = e.clientY + mod.y + "px";
         this.position.left = e.clientX + mod.x + "px";
       }
@@ -187,6 +189,7 @@ export default {
 .quick-view .quick-view-close-button.active {
   top: -1.5rem;
   pointer-events: all;
+  opacity: 1;
 }
 
 .quick-view .quick-view-close-button {
@@ -201,9 +204,6 @@ export default {
   pointer-events: none;
   transition: all 0.25s linear;
   outline: 2px solid #2f2c2c;
-}
-
-.quick-view-slot {
-  padding: 0.25rem;
+  opacity: 0;
 }
 </style>
