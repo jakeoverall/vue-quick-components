@@ -1,13 +1,16 @@
 {
   "name": "@bcwdev/quickvue",
   "version": "0.1.0",
+  "main": "./dist/QuickVue.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "bundle": "vue-cli-service build --target lib --name quickvue [entry]"
+    "bundle": "vue-cli-service build --target lib --name QuickVue ./src/components/QuickVue.js"
   },
+  "files": [
+    "dist/*"
+  ],
   "dependencies": {
-    "core-js": "^2.6.5",
     "vue": "^2.6.10"
   },
   "devDependencies": {
