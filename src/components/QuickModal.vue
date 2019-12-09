@@ -4,9 +4,9 @@
       <div class="quick-modal quick-modal-container" :class="{open: open}" v-if="open">
         <div class="quick-modal-overlay" :class="{open: open}" @click="toggleModal"></div>
         <div
-          class="quick-modal-card card square p-1 d-flex"
+          class="quick-modal-card"
           :class="{open: open}"
-          :style="{'min-width': width+'%','max-height': height+'%'}"
+          :style="{'width': width+'%','max-height': height+'%'}"
         >
           <div>
             <slot></slot>
